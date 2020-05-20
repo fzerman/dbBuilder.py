@@ -17,13 +17,17 @@ Therefore, the sqlite3 is necessary.
 
 ### Functions
 * selectAll()
+
 name -> table name that you want to select
 ```python
   def selectAll(name)
 ```
 * select()
+
 name -> table name that you want to select
+
 thing -> "Select (here) From ..."
+
 func -> a callback function like where()
 ```python
   def select(self,name,thing,func = [])
