@@ -35,13 +35,7 @@ class dataBase():
 
     def selectAll(self,name):
         sorgu = "Select * From " + name
-        self.s.append(sorgu)
-        c = ""
-        for i in self.s:
-            c += i
-            c += " " 
-        
-        self.cursor.execute(c)
+        self.cursor.execute(sorgu)
         results = self.cursor.fetchall()
         if(len(results) >0):
             return results
@@ -90,7 +84,7 @@ class dataBase():
             print("başarıyla silindi")
         else:
             print("item bulunamadı.")
-            
+
     def update(self,name,thing,value,func=[]):
         sorgu = "Update " + name + " set " + thing + " = ? " + func[0]
         print(sorgu)
