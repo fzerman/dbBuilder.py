@@ -32,8 +32,27 @@ func -> a callback function like where()
 ```python
   def select(self,name,thing,func = [])
 ```
+* where()
 
-.
-.
-.
-SOON
+name -> the column name
+
+thing -> item that you want to select
+```python
+  def where(self,name,thing)
+```
+* insert()
+
+name -> column name
+
+thing -> values
+```python
+  def insert(self,name,thing = [])
+```
+* delete()
+
+name -> table name
+
+func -> callback function
+```python
+  def delete(self,name,func = [])
+```
