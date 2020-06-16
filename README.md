@@ -56,3 +56,13 @@ func -> callback function
 ```python
   def delete(self,name,func = [])
 ```
+* update()
+
+name -> table name
+
+thing -> column name 
+
+func -> callback
+```python
+  def update(self,name,thing,value,func=[])
+```
