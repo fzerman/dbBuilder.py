@@ -14,7 +14,15 @@ Therefore, the sqlite3 is necessary.
   db = dataBase()
   //codes
 ```
-
+### Creating a table
+```python
+  table("TABLE_NAME")
+  schema("COLUMN1_NAME","TYPE_OF_COLUMN1")
+  schema("COLUMN2_NAME","TYPE_OF_COLUMN2")
+  schema("COLUMN3_NAME","TYPE_OF_COLUMN3")
+  schema("COLUMN4_NAME","TYPE_OF_COLUMN4")
+  createTable()
+```
 ### Functions
 * selectAll()
 
