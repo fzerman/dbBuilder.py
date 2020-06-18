@@ -9,10 +9,16 @@ db.createTable()
 db.insert('zerman',['a','b'])
 db.delete('zerman',db.where('isim','ahmet'))
 db.update('zerman','isim','a',db.where('yazar','v'))
-"""
-a = 'a'
 db.delete('denemetable',db.where('isim',a))
-
-
 info = db.selectAll('denemetable')
+print(info)
+info = db.selectAll('zerman')
+info = db.select('zerman',"isim",db.sort('id',-1))
+print(info)
+info = db.select('zerman',"*")
+info = db.filter(info,"avr","id","zerman")
+print(info)
+"""
+info = db.select('zerman',"*")
+info = db.filter(info,"avr","id","zerman")
 print(info)

@@ -9,6 +9,7 @@ class dataBase():
         self.connect(DB)
         self.i = 0
         self.s = list()
+    
     def connect(self,DB):
         self.baglanti = sqlite3.connect(DB)
         self.cursor = self.baglanti.cursor()
@@ -43,8 +44,11 @@ class dataBase():
             return False
 
     def select(self,name,thing,func = []):
-        sorgu = "Select " + thing + " From " + name + " " + func[0]
         if len(func) > 0:
+            sorgu = "Select " + thing + " From " + name + " " + func[0]
+        else:
+            sorgu = "Select " + thing + " From " + name 
+        if len(func) > 1:
             self.cursor.execute(sorgu,(func[1],))
             results = self.cursor.fetchall()
         else:
@@ -75,8 +79,7 @@ class dataBase():
         result = self.select(name,'*',func)
         if result:
             sorgu = "Delete From " + name + " " +func[0]
-            print(sorgu)
-            if len(func) > 0:
+            if len(func) > 1:
                 self.cursor.execute(sorgu,(func[1],))
             else:
                 self.cursor.execute(sorgu)
@@ -87,10 +90,49 @@ class dataBase():
 
     def update(self,name,thing,value,func=[]):
         sorgu = "Update " + name + " set " + thing + " = ? " + func[0]
-        print(sorgu)
-        if len(func) > 0:
+        if len(func) > 1:
             self.cursor.execute(sorgu,(value,func[1]))
         else:
             self.cursor.execute(sorgu)
         self.baglanti.commit()
         print("başarıyla güncellendi.")
+
+    def sort(self,column,state = 1):
+        if(type(state) == int):
+            if(state == 1 ):
+                sorgu = "ORDER BY " + column + " ASC"
+            elif(state == -1):
+                sorgu = "ORDER BY " + column + " DESC"
+            return [sorgu]
+        else:
+            print("ERROR")   
+
+    def getDBinfo(self,name):
+        info = []
+        sorgu = "PRAGMA table_info("+name+")"
+        self.cursor.execute(sorgu)
+        results = self.cursor.fetchall()
+        if results:
+            for result in results:
+                info.append(result[1])   
+            return info
+    
+    def filter(self,data,_filter,state,table):
+        if data:
+            if _filter == "avr":
+                list_column = self.getDBinfo(table)
+                index = -1
+                averange = 0
+                for column in list_column:
+                    index += 1
+                    if state == column:
+                        for i in data:
+                            averange += int(i[index])
+                return averange / len(data)
+            
+            #elif _filter == "grt":
+               
+            else:
+                print("Filter Error: '" + _filter + "' not supported.")
+        else:
+            print("Data Error: Data cannot be founded.")
