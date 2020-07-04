@@ -19,10 +19,7 @@ class dataBase():
 
     def schema(self,name,tip):
         col.append(name + " " + tip)
-
-    def id(self):
-        return " INTEGER PRIMARY KEY AUTOINCREMENT"
-
+    
     def createTable(self):
         sorgu = "Create Table If not exists " + table[self.i] + " ("
         for i in col:
