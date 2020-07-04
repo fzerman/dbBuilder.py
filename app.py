@@ -1,5 +1,6 @@
 from db_builder import *
-
+from column import *
+c = column()
 db = dataBase()
 """
 db.table('abc')
@@ -18,7 +19,12 @@ print(info)
 info = db.select('zerman',"*")
 info = db.filter(info,"avr","id","zerman")
 print(info)
-"""
+
 info = db.select('zerman',"*")
 info = db.filter(info,"avr","id","zerman")
 print(info)
+
+"""
+info = c.autoInc()
+print(info)
+
