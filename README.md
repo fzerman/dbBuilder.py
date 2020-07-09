@@ -1,3 +1,5 @@
+![dbBuilder.py Logo](https://github.com/Swindler36/dbBuilder.py/blob/master/db%20Builder%20py.png "dbBuilder.py Logo")
+
 # dbBuilder.py v 0.1.2
 This is a mini query library for python.
 This library supports sqlite3 and uses it. 
