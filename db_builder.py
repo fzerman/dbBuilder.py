@@ -113,6 +113,8 @@ class dataBase():
             for result in results:
                 info.append(result[1])   
             return info
+        else:
+            return False
     
     def filter(self,data,_filter,state,table):
         if data:

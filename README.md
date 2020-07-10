@@ -23,7 +23,7 @@ Therefore, the sqlite3 is necessary.
   schema("COLUMN4_NAME","TYPE_OF_COLUMN4")
   createTable()
 ```
-### Functions
+## Functions
 * selectAll()
 
 name -> table name that you want to select
@@ -38,7 +38,7 @@ thing -> "Select (here) From ..."
 
 func -> a callback function like where()
 ```python
-  def select(self,name,thing,func = [])
+  def select(name,thing,func = [])
 ```
 * where()
 
@@ -46,7 +46,7 @@ name -> the column name
 
 thing -> item that you want to select
 ```python
-  def where(self,name,thing)
+  def where(name,thing)
 ```
 * insert()
 
@@ -54,7 +54,7 @@ name -> column name
 
 thing -> values
 ```python
-  def insert(self,name,thing = [])
+  def insert(name,thing = [])
 ```
 * delete()
 
@@ -62,7 +62,7 @@ name -> table name
 
 func -> callback function
 ```python
-  def delete(self,name,func = [])
+  def delete(name,func = [])
 ```
 * update()
 
@@ -72,5 +72,32 @@ thing -> column name
 
 func -> callback
 ```python
-  def update(self,name,thing,value,func=[])
+  def update(name,thing,value,func=[])
 ```
+* sort()
+
+Returns "ORDER BY".
+If "state = 1", returns "ASC". If "state = -1", returns "DESC".
+Default value of "state" is 1.   
+```python
+	def sort(column,state = 1)
+```
+
+* getDBinfo()
+
+Returns column infos of selected table.
+```python
+	def getDBinfo(name)
+```
+
+* filter()
+
+Makes some calculations like "average" on data.
+###### WARNİNG! :
+It supports only "avr" now.
+
+```python
+	def filter(data,_filter,state,table)
+```
+
+
