@@ -38,14 +38,10 @@
 * Structure
 -----
 * Options
-
-  * opt_İD
-
-  * opt_label
-
-  * opt_value
-
-  * auto_load
+  * opt_İD
+  * opt_label
+  * opt_value
+  * auto_load
 
 
 
