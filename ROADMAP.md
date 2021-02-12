@@ -3,7 +3,7 @@
 
 
 * DB_Query()
-* DB_Schema()
+* DB_Model()
 * DB_Field() // field parent class
   * .TextField
   * .CharField
