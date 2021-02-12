@@ -8,7 +8,7 @@
   * .TextField
   * .CharField
   * .DateField
-  * .DateTimeField
+  * .DateTimeField 
   * .TimeField
   * .BooleanField
   * .IntegerField
