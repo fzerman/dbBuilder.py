@@ -1,6 +1,6 @@
-from db_builder.validators.LengthValidator import LengthValidator
+from db_builder.validators.EmailValidator import EmailValidator
 
-c = LengthValidator(value="ahdf-sjodklg",max=50,min=20)
+c = EmailValidator(value="ah.dfs@jodklgcom")
 
 print(c.check())
 

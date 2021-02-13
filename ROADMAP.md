@@ -24,11 +24,11 @@
   * .LangField
 
 * DB_Validator() 
-  * .SpecialCharValidator
-  * .LengthValidator
-  * .BigLetterValidator
-  * .SmallLetterValidator
-  * .EmailValidator
+  * .SpecialCharValidator +
+  * .LengthValidator +
+  * .BigLetterValidator +
+  * .SmallLetterValidator +
+  * .EmailValidator +
   * .NumberValidator
 
 * Utilities
