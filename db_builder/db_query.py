@@ -11,11 +11,8 @@ class DB_Query():
         self.connection = self.s.connect(self.db_url)
         self.cursor = self.connection.cursor()
 
-    def _run(self):
-
-        if(self.query == ""):
-            return False
-
-        pass
-
+    def run(self,query,callback):
+        callback(query,self.cursor.execute)
+        self.results = self.cursor.fetchall()
+        
 

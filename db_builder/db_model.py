@@ -1,4 +1,8 @@
-import sys, inspect
+#import sys, inspect
+from .db_query import DB_Query
+from .settings import DB_SETTINGS
+Query = DB_Query(DB_SETTINGS["DB_URL"])
+
 
 class DB_Model():
     def model_create(self):
@@ -9,32 +13,26 @@ class DB_Model():
             if not i.startswith("__"):
                 self.instance_dict[i] = self.__class__.__dict__[i]
 
-        self.migration_create()
+        self.create_table()
 
-    def migration_create(self):
-        import datetime, os
-        import pathlib
-        # path tarafı düzelmeli
-        path = pathlib.Path(__file__).parent.absolute()
-        path = os.path.join(path,"migrations")
-        if(not os.path.isdir(path)):
-            os.mkdir(path) 
-        e = datetime.datetime.now()
-        file_name = "%s-%s-%s-" % (e.month, e.day, e.year) + self.randomword()+".py"
-        f = open(path+"/"+file_name,"w")
-        f.write("hi guys")
+    def create_table(self):
+        create_table_query = "Create Table If not exists {} (".format(self.model_name)
 
-    def randomword(self):
-        import random, string
-        digits = string.digits
-        return ''.join(random.choice(digits) for i in range(11))
+        for i in self.instance_dict:
+            self.instance_dict[i].field_name = i
+            q = self.instance_dict[i].set_query()
+            create_table_query += q
+            
+            if not list( self.instance_dict.keys() ).index(i) == len( self.instance_dict.keys() )-1:
+                create_table_query += ", "
+            
+        create_table_query += ")"
+        
+        def ct_wrapper(q,execute):
+            execute(q)
 
-class M(DB_Model):
-    a = "hjkl"
-    b = "hjkl"
+        Query.run(create_table_query,ct_wrapper)
 
-    def __init__(self):
-        self.x = "hjkl"
 
     
 
