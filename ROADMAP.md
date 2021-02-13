@@ -36,7 +36,13 @@
 
 * DB_Error()
   * .NotFoundKwarg
-  * .
+  * .ModelError
+  * .OperationError
+  * .QueryError
+  * .FieldError
+  * .ValidatorError
+  * .SettingError
+  * .StructureError
 
 * Structure
 -----
