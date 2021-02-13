@@ -29,7 +29,7 @@
   * .BigLetterValidator +
   * .SmallLetterValidator +
   * .EmailValidator +
-  * .NumberValidator
+  * .NumberValidator +
 
 * Utilities
   * StringStructureParser() <code><a>@<c>.<e></code> +
