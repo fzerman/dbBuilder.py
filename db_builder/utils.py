@@ -29,6 +29,7 @@ class StringStructureParser():
         self.format_dict = {}
         self.string_copy = self.string
         for i in l:
+            #if no last 
             if not( i.startswith("<") and i.endswith(">") ):
                 label = l[ l.index(i)-1 ].replace("<","").replace(">","") 
                 self.format_dict[ label ] = self.string_copy.partition(i)[0]
@@ -41,3 +42,6 @@ class StringStructureParser():
 
 
 
+"""
+need more development if format label "<....>" is not first index, parser gives error
+"""

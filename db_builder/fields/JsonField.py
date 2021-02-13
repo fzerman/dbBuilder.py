@@ -12,8 +12,12 @@ class JsonField(DB_Field):
             return True
         return False
 
+    # value that send to db
     def db_value(self):
         if self.is_valid():
             return json.dumps( self.get_kwarg("value"))
         return False
 
+    # value that get from db
+    def get_value(self,value):
+        return json.loads(value)

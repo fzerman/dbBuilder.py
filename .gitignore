@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 .vscode
-.db
+*.db
 app.py
 
 # C extensions

@@ -7,13 +7,20 @@ class BoolField(DB_Field):
         self.field_type = "INT"
         self.value = 0
 
-    def get_value(self):
+    def db_value(self):
         if self.is_valid():
-            if(self.value == 1):
-                return True
+            if(self.value == True):
+                return 1
+            else:
+                return 0
         return False
-
+        
     def is_valid(self):
-        if self.value in [0,1]:
+        if self.value in [True,False]:
+            return True
+        return False
+    
+    def get_value(self,value):
+        if(value == 1):
             return True
         return False

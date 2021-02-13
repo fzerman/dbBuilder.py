@@ -4,3 +4,7 @@ DB_SETTINGS = {
 }
 
 PROJECT_PATH = ""
+
+INFO_SCHEMA = {
+    "TABLE_NAME" : "INFO_SCHEMA"
+}

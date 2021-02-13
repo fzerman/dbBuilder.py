@@ -15,7 +15,7 @@ class CharField(DB_Field):
     def is_valid(self):
         return LengthValidator(value=self.get_kwarg("value"),length=self.max_length).check()
 
-    def get_value(self):
+    def db_value(self):
         if self.is_valid():
             return self.get_kwarg("value")
         return False

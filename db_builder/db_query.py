@@ -12,7 +12,7 @@ class DB_Query():
         self.cursor = self.connection.cursor()
 
     def run(self,query,callback):
-        callback(query,self.cursor.execute)
-        self.results = self.cursor.fetchall()
+        callback(query,self)
         
-
+from .settings import DB_SETTINGS
+Query = DB_Query(DB_SETTINGS["DB_URL"])
