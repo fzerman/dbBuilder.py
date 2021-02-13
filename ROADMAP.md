@@ -5,13 +5,13 @@
 * DB_Query()
 * DB_Model()
 * DB_Field() // field parent class
-  * .TextField
-  * .CharField
-  * .DateField
+  * .TextField +
+  * .CharField +
+  * .DateField 
   * .DateTimeField 
   * .TimeField
-  * .BooleanField
-  * .IntegerField
+  * .BooleanField +
+  * .IntegerField +
   * .JsonField
   * .AutoField
   * .IDField
@@ -24,7 +24,7 @@
   * .LangField
 
 * DB_Validator() 
-  * .SpecialCharacterValidator
+  * .SpecialCharValidator
   * .LengthValidator
   * .BigLetterValidator
   * .SmallLetterValidator
@@ -32,7 +32,7 @@
   * .NumberValidator
 
 * Utilities
-  * StringStructureParser() <a>@<c>.<e>
+  * StringStructureParser() <code><a>@<c>.<e></code> +
 
 
 * Structure

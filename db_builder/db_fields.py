@@ -54,21 +54,10 @@ class DB_Field():
     def get_foreign(self):
         return self.get_kwarg("foreign")
 
+    def get_validators(self):
+        return self.get_kwarg("validators")
 
-class CharField(DB_Field):
-    def __init__(self,**kwargs):
-        self.kwargs = kwargs
-        self.field_name = ""
-        if(self.get_kwarg("length")):
-            self.field_type = "varchar("+self.get_kwarg("length")+")"
-        else:
-            self.field_type = "varchar(64)"
 
-class TextField(DB_Field):
-    def __init__(self,**kwargs):
-        self.kwargs = kwargs
-        self.field_name = ""
-        self.field_type = "TEXT"
 
         
     

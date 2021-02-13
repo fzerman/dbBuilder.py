@@ -1,4 +1,7 @@
-from db_builder.db_model import M
+from db_builder.validators.LengthValidator import LengthValidator
 
-m = M()
-m.migration_create()
+c = LengthValidator(value="ahdf-sjodklg",max=50,min=20)
+
+print(c.check())
+
+    
