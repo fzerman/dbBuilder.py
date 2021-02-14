@@ -12,6 +12,11 @@ class CharField(DB_Field):
         else:
             self.field_type = "varchar(64)"
 
+    def __str__(self):
+        if self.get_kwarg("value"):
+            return self.get_kwarg("value")
+        return ""
+    
     def is_valid(self):
         return LengthValidator(value=self.get_kwarg("value"),length=self.max_length).check()
 
