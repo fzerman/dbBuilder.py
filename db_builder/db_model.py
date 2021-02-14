@@ -4,23 +4,17 @@ from .db_field_object import DB_FieldObject
 
 class DB_Model():
     def __init__(self,**kwargs):
-        #object_values kaldırılıcak
-        self.object_values = kwargs
         self.model_name = self.__class__.__name__
-        self.instance_dict = {}
-        
-        for i in self.__class__.__dict__:
-            if not i.startswith("__"):
-                self.instance_dict[i+"_field"] = self.__class__.__dict__[i]
-                self.__class__.__dict__[i] = DB_FieldObject(self.__class__,kwargs[i])
-
+        self.instance_dict = self.__class__.__dict__
+        inst_dict = {}
         for i in self.instance_dict:
-            self.instance_dict[i+"_field"].kwargs["value"] = kwargs[i]
-            self.instance_dict[i] = DB_FieldObject(self.__class__,kwargs[i])
-
-    def set_value(self,**kwargs):
-        for i in kwargs:
-            self.instance_dict[i].kwargs["value"] = kwargs[i]
+            if not i.startswith("__"):
+                setattr(self,i+"_field",DB_FieldObject(self.__class__,self.instance_dict[i]))
+                setattr(self,i,kwargs[i])
+                inst_dict[i] = self.instance_dict[i]
+        
+        self.instance_dict = inst_dict
+       
 
     def create_table(self):
         create_table_query = "Create Table If not exists {} (".format(self.model_name)
@@ -51,7 +45,8 @@ class DB_Model():
             
         query += ") VALUES("
         for i in self.instance_dict:
-            query += "'{}'".format(self.instance_dict[i].db_value())
+            self.__dict__[i+"_field"].field.kwargs["value"] = self.__dict__[i]
+            query += "'{}'".format(self.__dict__[i+"_field"].field.db_value())
             
             if not list( self.instance_dict.keys() ).index(i) == len( self.instance_dict.keys() )-1:
                 query += ", "
