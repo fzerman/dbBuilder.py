@@ -34,6 +34,15 @@
 * Utilities
   * StringStructureParser() <code><a>@<c>.<e></code> +
 
+* DB_Error()
+  * .NotFoundKwarg
+  * .ModelError
+  * .OperationError
+  * .QueryError
+  * .FieldError
+  * .ValidatorError
+  * .SettingError
+  * .StructureError
 
 * Structure
 -----
