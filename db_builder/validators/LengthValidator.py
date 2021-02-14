@@ -9,25 +9,25 @@ class LengthValidator(DB_Validator):
             if "length" in kwargs:
                 if kwargs["length"] > len(kwargs["value"]):
                     return True
-                return False
+                raise ValueError('Value is not valid!')
             
             elif "max" in kwargs and "min" in kwargs:
                 if kwargs["max"] > len(kwargs["value"]) and kwargs["min"] < len(kwargs["value"]):
                     return True
-                return False
+                raise ValueError('Value is not valid!')
             
             elif "max" in kwargs:
                 if kwargs["max"] > len(kwargs["value"]):
                     return True
-                return False
+                raise ValueError('Value is not valid!')
 
             elif "min" in kwargs:
                 if kwargs["min"] < len(kwargs["value"]):
                     return True
-                return False
+                raise ValueError('Value is not valid!')
 
 
-            return False
+            raise ValueError('Value is not valid!')
 
             
         return self._check(wrapper)
