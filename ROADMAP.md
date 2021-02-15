@@ -35,12 +35,12 @@
   * StringStructureParser() <code><a>@<c>.<e></code> +
 
 * DB_Error()
-  * .NotFoundKwarg
-  * .ModelError
+  * .NotFoundKwarg +
+  * .ModelError +
   * .OperationError
-  * .QueryError
-  * .FieldError
-  * .ValidatorError
+  * .QueryError +
+  * .FieldError +
+  * .ValidatorError +
   * .SettingError
   * .StructureError
 
