@@ -6,21 +6,21 @@
 * DB_Model()
 * DB_Field() // field parent class
   * .TextField +
-  * .CharField +
+  * .CharField + verified
   * .DateField 
   * .DateTimeField 
   * .TimeField
   * .BooleanField +
   * .IntegerField +
-  * .JsonField +
+  * .JsonField + verified
   * .AutoField
-  * .IDField +
+  * .IDField + verified
   * .URLField
   * .SlugField
-  * .FileField
-  * .ImageField +
+  * .FileField + verified
+  * .ImageField + verified
   * .FloatField 
-  * .EmailField +
+  * .EmailField + verified
   * .LangField
 
 * DB_Validator()  

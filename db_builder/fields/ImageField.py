@@ -1,5 +1,6 @@
 from ..db_fields import DB_Field
-from ..settings import UPLOAD_FOLDER, VERIFIED_IMG_FORMATS
+from ..errors import ValidatorError
+from ..settings import UPLOAD_FOLDER, VERIFIED_IMG_FORMATS, UPLOAD_URL
 from PIL import Image
 import string, random, os
 
@@ -11,22 +12,21 @@ class ImageField(DB_Field):
 
     def db_value(self):
         if self.is_valid():
-            file_name = ''.join(random.choices(string.ascii_lowercase + string.digits, k = 20))
+            file_name = ''.join(random.choices(string.ascii_lowercase + string.digits, k = 20)) + '.'+self.img.format.lower()
             if os.path.isdir(UPLOAD_FOLDER):
                 file_path = os.path.join(UPLOAD_FOLDER,file_name)
-                image = open(file_path,"w")
-                image.write(self.img)
-                image.close()
-                return file_path
-            return False
-        return False
+                self.img.save(file_path)
+                return f"{UPLOAD_URL}/{file_name}"
+            raise FileNotFoundError("Upload Directory Is Not Found!")
+        raise ValidatorError("Image","ImageValidator","Image format is not in verified image formats!")
             
     def is_valid(self):
         img = Image.open(self.get_kwarg("value"))
-        if img.format.lower() in VERIFIED_IMG_FORMATS and img.verify():   
+        if img.format.lower() in VERIFIED_IMG_FORMATS:   
             self.img = img
             return True
-        return False
+        raise ValidatorError("Image","ImageValidator","Image format is not in verified image formats!")
+
     
     def get_value(self,value):
         if os.path.isfile(value):

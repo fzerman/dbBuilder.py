@@ -5,3 +5,5 @@ from .JsonField import JsonField
 from .TextField import TextField
 from .IDField import IDField
 from .EmailField import EmailField
+from .ImageField import ImageField
+from .FileField import FileField
