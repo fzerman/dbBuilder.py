@@ -14,21 +14,21 @@ class DB_Field():
      
     def set_q(self):
         q = [self.field_type]
-
-        if(not self.is_nullable()):
-            q.append("NOT NULL")
+        
+        if(self.is_primary()):
+            q.append("PRIMARY KEY")
 
         if(self.is_unique()):
             q.append("UNIQUE")
 
         if(self.is_auto_inc()):
-            q.append("AUTO_INCREMENT")
-
-        if(self.is_primary()):
-            q.append("PRIMARY KEY")
+            q.append("AUTOINCREMENT")
 
         if(self.get_foreign()):
             q.append("FOREIGN KEY REFERENCES "+ self.get_foreign() +"(id)")
+
+        if(not self.is_nullable()):
+            q.append("NOT NULL")
 
         default = self.get_default()
         if(default):
