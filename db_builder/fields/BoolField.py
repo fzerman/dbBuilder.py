@@ -5,18 +5,17 @@ class BoolField(DB_Field):
         self.kwargs = kwargs
         self.field_name = ""
         self.field_type = "INT"
-        self.value = 0
 
     def db_value(self):
         if self.is_valid():
-            if(self.value == True):
+            if(self.get_kwarg("value") == True):
                 return 1
             else:
                 return 0
         return False
         
     def is_valid(self):
-        if self.value in [True,False]:
+        if self.get_kwarg("value") in [True,False]:
             return True
         return False
     
