@@ -1,6 +1,6 @@
 from ..db_fields import DB_Field
 from ..validators import EmailValidator
-
+from ..errors import FieldError
 
 class EmailField(DB_Field):
     def __init__(self,**kwargs):
@@ -19,7 +19,7 @@ class EmailField(DB_Field):
     def db_value(self):
         if self.is_valid():
             return self.get_kwarg("value")
-        return False
+        raise FieldError("",self.field_name,"Email is not valid!")
 
     def get_value(self):
         pass

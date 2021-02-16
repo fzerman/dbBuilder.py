@@ -1,3 +1,4 @@
+from .errors import NotFoundKwarg
 class DB_Validator():
     def _check(self,check_callback):
         if type(check_callback).__name__ == "function":
@@ -7,4 +8,4 @@ class DB_Validator():
     def get_kwarg(self,kw):
         if kw in self.kwargs:
             return self.kwargs[kw]
-        return False
+        raise NotFoundKwarg(kw)

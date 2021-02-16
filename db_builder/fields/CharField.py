@@ -19,3 +19,6 @@ class CharField(DB_Field):
         if self.is_valid():
             return self.get_kwarg("value")
         return False
+
+    def get_value(self,value):
+        pass

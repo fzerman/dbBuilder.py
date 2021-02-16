@@ -5,3 +5,16 @@ class IntField(DB_Field):
         self.kwargs = kwargs
         self.field_name = ""
         self.field_type = "INT"
+
+    def is_valid(self):
+        if isinstance( self.get_kwarg("value"), int):
+            return True
+        return False
+
+    def db_value(self):
+        if self.is_valid():
+            return self.get_kwarg("value") 
+        return False
+
+    def get_value(self,value):
+        pass

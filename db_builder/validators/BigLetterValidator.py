@@ -1,4 +1,5 @@
 from ..db_validator import DB_Validator
+from ..errors import ValidatorError, NotFoundKwarg
 
 class BigLetterValidator(DB_Validator):
     def __init__(self,**kwargs):
@@ -11,8 +12,9 @@ class BigLetterValidator(DB_Validator):
                 for i in bigletters:
                     if i in kwargs["value"]:
                         return True
-                return False
-            return False
+                raise ValidatorError(kwargs["field"],"BigLetterValidator","Not Found Big Letter")
+            raise NotFoundKwarg("value")
+
             
         return self._check(wrapper)
             

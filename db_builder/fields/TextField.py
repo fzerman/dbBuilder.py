@@ -9,7 +9,10 @@ class TextField(DB_Field):
     def is_valid(self):
         return True
 
-    def get_value(self):
+    def db_value(self):
         if self.is_valid():
             return self.get_kwarg("value")
         return False
+
+    def get_value(self,value):
+        return str(value)
