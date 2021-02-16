@@ -12,18 +12,18 @@
   * .TimeField
   * .BooleanField +
   * .IntegerField +
-  * .JsonField
+  * .JsonField +
   * .AutoField
-  * .IDField
+  * .IDField +
   * .URLField
   * .SlugField
   * .FileField
-  * .ImageField
-  * .FloatField
-  * .EmailField
+  * .ImageField +
+  * .FloatField 
+  * .EmailField +
   * .LangField
 
-* DB_Validator() 
+* DB_Validator()  
   * .SpecialCharValidator +
   * .LengthValidator +
   * .BigLetterValidator +
