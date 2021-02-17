@@ -1,6 +1,6 @@
 from ..db_validator import DB_Validator
 
-class BigLetterValidator(DB_Validator):
+class NumberValidator(DB_Validator):
     def __init__(self,**kwargs):
         self.kwargs = kwargs
 
