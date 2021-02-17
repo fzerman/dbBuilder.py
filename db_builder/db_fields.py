@@ -1,3 +1,14 @@
+from .validators import *
+
+VALIDATORS_DICT = {
+    "EmailValidator" : EmailValidator(),
+    "BigLetterValidator" : BigLetterValidator(),
+    "LengthValidator" : LengthValidator(),
+    "NumberValidator" : NumberValidator(),
+    "SmallLetterValidator" : SmallLetterValidator(),
+    "SpecialCharValidator" : SmallLetterValidator()
+}
+
 class DB_Field():
     def __init__(self,**kwargs):
         self.kwargs = kwargs
@@ -54,9 +65,22 @@ class DB_Field():
     def get_foreign(self):
         return self.get_kwarg("foreign")
 
-    def get_validators(self):
-        return self.get_kwarg("validators")
+    def get_validators_result(self):
+        validators = self.get_kwarg("validators")
 
+        if not validators:
+            return True
+        
+        result = True
+        
+        for i in validators:
+            VALIDATORS_DICT[i].kwargs = validators[i]
+            result = result and VALIDATORS_DICT[i].check()
+            if result == False:
+                return result
+
+        return result
+     
 
 
         
