@@ -21,6 +21,9 @@ class DB_Model():
                 
                 if i in kwargs:
                     setattr(self,i,kwargs[i])
+                else:
+                    setattr(self,i,self.instance_dict[i].db_value())
+
                 inst_dict[i] = self.instance_dict[i]
         
         self.instance_dict = inst_dict
@@ -58,7 +61,7 @@ class DB_Model():
             
         query += ") VALUES("
         for i in self.instance_dict:
-            if not i == "id":
+            if not i == "id" :
                 self.__dict__[i+"_field"].field.kwargs["value"] = self.__dict__[i]
                 query += "'{}'".format(self.__dict__[i+"_field"].field.db_value())
                 
@@ -104,6 +107,8 @@ class DB_Model():
                 q_set = db_q.cursor.fetchall()
                 if len(q_set) > 0:
                     self.query_set = q_set
+                else:
+                    self.query_set = []
             
             Query.run(query,ct_wrapper)
 
