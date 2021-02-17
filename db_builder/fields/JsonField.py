@@ -8,7 +8,7 @@ class JsonField(DB_Field):
         self.field_type = "TEXT"
 
     def is_valid(self):
-        if type(self.get_kwarg("value")).__name__ == "dict" or type(self.get_kwarg("value")).__name__ == "list":
+        if type(self.get_kwarg("value")).__name__ == "dict" or type(self.get_kwarg("value")).__name__ == "list" and self.get_validators_result():
             return True
         return False
 

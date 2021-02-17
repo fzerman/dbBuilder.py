@@ -13,7 +13,7 @@ class CharField(DB_Field):
             self.field_type = "varchar(64)"
 
     def is_valid(self):
-        return LengthValidator(value=self.get_kwarg("value"),length=self.max_length).check()
+        return LengthValidator(value=self.get_kwarg("value"),length=self.max_length).check() and self.get_validators_result()
 
     def db_value(self):
         if self.is_valid():

@@ -7,7 +7,7 @@ class IntField(DB_Field):
         self.field_type = "INT"
 
     def is_valid(self):
-        if isinstance( self.get_kwarg("value"), int):
+        if isinstance( self.get_kwarg("value"), int) and self.get_validators_result():
             return True
         return False
 

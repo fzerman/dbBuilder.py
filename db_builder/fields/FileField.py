@@ -26,7 +26,7 @@ class FileField(DB_Field):
             
     def is_valid(self):
         f = self.get_kwarg("value")
-        if f.lower().endswith(VERIFIED_FILE_FORMATS):   
+        if f.lower().endswith(VERIFIED_FILE_FORMATS) and self.get_validators_result():   
             self.file = f
             return True
         raise ValidatorError("File","FileValidator","File format is not in verified file formats!")

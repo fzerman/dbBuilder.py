@@ -7,7 +7,7 @@ class FloatField(DB_Field):
         self.field_type = "REAL"
 
     def is_valid(self):
-        if isinstance( self.get_kwarg("value"), float):
+        if isinstance( self.get_kwarg("value"), float) and self.get_validators_result():
             return True
         return False
 

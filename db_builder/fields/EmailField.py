@@ -14,7 +14,7 @@ class EmailField(DB_Field):
             self.field_type = "varchar(64)"
 
     def is_valid(self):
-        return EmailValidator(value=self.get_kwarg("value")).check()
+        return EmailValidator(value=self.get_kwarg("value")).check() and self.get_validators_result()
 
     def db_value(self):
         if self.is_valid():

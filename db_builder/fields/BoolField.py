@@ -15,7 +15,7 @@ class BoolField(DB_Field):
         return False
         
     def is_valid(self):
-        if self.get_kwarg("value") in [True,False]:
+        if self.get_kwarg("value") in [True,False] and self.get_validators_result():
             return True
         return False
     

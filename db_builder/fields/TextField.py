@@ -7,7 +7,7 @@ class TextField(DB_Field):
         self.field_type = "TEXT"
 
     def is_valid(self):
-        return True
+        return self.get_validators_result()
 
     def db_value(self):
         if self.is_valid():

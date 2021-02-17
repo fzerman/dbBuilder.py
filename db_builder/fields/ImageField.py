@@ -22,7 +22,7 @@ class ImageField(DB_Field):
             
     def is_valid(self):
         img = Image.open(self.get_kwarg("value"))
-        if img.format.lower() in VERIFIED_IMG_FORMATS:   
+        if img.format.lower() in VERIFIED_IMG_FORMATS and self.get_validators_result():   
             self.img = img
             return True
         raise ValidatorError("Image","ImageValidator","Image format is not in verified image formats!")
