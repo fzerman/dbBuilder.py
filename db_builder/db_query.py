@@ -9,7 +9,14 @@ class DB_Query():
 
     def _connect(self):
         self.connection = self.s.connect(self.db_url)
+        self.connection.row_factory = self.dict_factory
         self.cursor = self.connection.cursor()
+
+    def dict_factory(self,cursor, row):
+        d = {}
+        for idx, col in enumerate(cursor.description):
+            d[col[0]] = row[idx]
+        return d
 
     def run(self,query,callback):
         callback(query,self)
