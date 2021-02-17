@@ -2,26 +2,24 @@
 # #oneweekchallenge
 
 
-* DB_Query()
-* DB_Model()
-* DB_Field() // field parent class
+* DB_Query() 
+* DB_Model() +
+* DB_Field() +
   * .TextField +
   * .CharField + verified
-  * .DateField 
-  * .DateTimeField 
-  * .TimeField
+  * .DateField +
+  * .DateTimeField +
+  * .TimeField +
   * .BooleanField +
   * .IntegerField +
   * .JsonField + verified
-  * .AutoField
   * .IDField + verified
-  * .URLField
-  * .SlugField
+  * .URLField +
+  * .SlugField +
   * .FileField + verified
   * .ImageField + verified
-  * .FloatField 
+  * .FloatField +
   * .EmailField + verified
-  * .LangField
 
 * DB_Validator()  
   * .SpecialCharValidator +
