@@ -2,6 +2,7 @@
 from .db_query import Query
 from .db_field_object import DB_FieldObject
 from .fields import IDField
+from .errors import ModelError
 
 class DB_Model():
     def __init__(self,**kwargs):
@@ -110,6 +111,18 @@ class DB_Model():
             self._update()
         else:
             self._insert()
+
+    def delete(self):
+        if self.id:
+            query = f"DELETE FROM {self.model_name} WHERE id = '{self.id}'"
+
+            def ct_wrapper(q,db_q):
+                db_q.cursor.execute(q)
+                db_q.connection.commit()
+            
+            Query.run(query,ct_wrapper)
+        else:
+            raise ModelError(self.model_name,"This record is not inserted!")
     
     class DB_Objects:
         def __init__(self,p_cls):
