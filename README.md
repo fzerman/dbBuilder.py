@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/Swindler36/dbBuilder.py/blob/master/db%20Builder%20py.png" alt="DB Builder Logo">
+    <img src="https://swindler36.github.io/dbBuilder.py/db%20Builder%20py.png" alt="DB Builder Logo">
 </p>
 
 <p align="center">
