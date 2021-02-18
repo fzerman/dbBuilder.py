@@ -89,7 +89,6 @@ post = MyPost().objects().filter(title="My first post",content="Hello everyone. 
   * ForeignKeyField 
 
 ### Built-in 5 Errors and Parent Error Class(for creating custom error) 
-```py
 * DB_Error (parent class)
   * .NotFoundKwarg 
   * .ModelError 
@@ -99,7 +98,7 @@ post = MyPost().objects().filter(title="My first post",content="Hello everyone. 
   * .ValidatorError 
   * .SettingError - not exist
   * .StructureError - not exist
-```
+
 
 ### Utilities
 * StringStructureParser (have some bugs)
