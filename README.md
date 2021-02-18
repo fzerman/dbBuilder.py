@@ -30,7 +30,7 @@ class MyPost(DB_Model):
         return self.title
         
 # for creating table
-MyPost.create_table()
+MyPost().create_table()
 ```
 
 ### Easy Insert, Update and Delete Operation
