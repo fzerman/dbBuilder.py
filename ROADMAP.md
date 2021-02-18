@@ -20,6 +20,7 @@
   * .ImageField + verified
   * .FloatField +
   * .EmailField + verified
+  * .ForeignKeyField +
 
 * DB_Validator()  
   * .SpecialCharValidator +
