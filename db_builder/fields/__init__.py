@@ -5,6 +5,7 @@ from .DateTimeField import DateTimeField
 from .EmailField import EmailField
 from .FileField import FileField
 from .FloatField import FloatField
+from .ForeignKeyField import ForeignKeyField
 from .IDField import IDField
 from .ImageField import ImageField
 from .IntField import IntField
