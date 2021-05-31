@@ -111,6 +111,30 @@ Output:
 """
 ```
 
+## Implementations
+### Flask
+```py
+from flask.globals import g
+# flask app contruction
+
+def connect_db():
+    Query = DB_Query("DB_URL")
+    class ob():
+        pass
+    MyPost.__Query__ = Query
+    ob.MyPost = MyPost
+
+    return ob
+    
+@app.before_request
+def before_request():
+    g.db = connect_db()
+    
+# codes...
+# Usage
+g.db.Mypost(...) # classical usage
+```
+
 
 
 
