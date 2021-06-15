@@ -72,8 +72,9 @@ class DB_Model():
         query += ") VALUES("
         for i in self.instance_dict:
             if not i == "id" :
-                self.__dict__[i+"_field"].field.kwargs["value"] = self.__dict__[i]
-                query += "'{}'".format(self.__dict__[i+"_field"].field.db_value())
+                ins_d = self.__dict__
+                ins_d[i+"_field"].field.kwargs["value"] = ins_d[i]
+                query += "'{}'".format(ins_d[i+"_field"].field.db_value())
                 
                 if not list( self.instance_dict.keys() ).index(i) == len( self.instance_dict.keys() )-1:
                     query += ", "
@@ -92,8 +93,9 @@ class DB_Model():
 
         for i in self.instance_dict:
             if not i == "id":
-                self.__dict__[i+"_field"].field.kwargs["value"] = self.__dict__[i]
-                query += "{} = '{}'".format(i,self.instance_dict[i].db_value())
+                ins_d = self.__dict__
+                ins_d[i+"_field"].field.kwargs["value"] = ins_d[i]
+                query += "{} = '{}'".format(i,ins_d[i].db_value())
                 
                 if not list( self.instance_dict.keys() ).index(i) == len( self.instance_dict.keys() )-1:
                     query += ", "
