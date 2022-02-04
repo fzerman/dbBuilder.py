@@ -12,7 +12,7 @@
 > 
 > End : 18 February 2021
 
-This is a mini orm library for python. This library sqlite3 uses it. Therefore, the sqlite3 is necessary.
+This is a mini orm library for python. This library uses sqlite3. Therefore, the sqlite3 is necessary.
 
 ## Features
 
