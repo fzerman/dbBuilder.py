@@ -22,10 +22,10 @@ class ForeignKeyField(DB_Field):
     def db_value(self):
         if self.is_valid():
             if inspect.isclass(self.get_kwarg("value")):
-                if self.get_kwarg("value").id:
-                    return self.get_kwarg("value").id
-                else:
-                    return FieldError("",self.field_name,"This Foreign Object is not recorded!")
+                return self.get_kwarg("value").id or FieldError(
+                    "", self.field_name, "This Foreign Object is not recorded!"
+                )
+
             elif type(self.get_kwarg("value")).__name__ in ["str","int"]:
                 return self.get_kwarg("value")
 

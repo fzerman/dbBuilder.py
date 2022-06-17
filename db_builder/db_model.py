@@ -19,11 +19,15 @@ class DB_Model():
         setattr(self,"id_field",DB_FieldObject(self.__class__,id_field))
         setattr(self,"id",0)
 
-        inst_dict = {}
-        inst_dict["id"] = id_field
+        inst_dict = {"id": id_field}
         for i in self.instance_dict:
             if not i.startswith("__"):
-                setattr(self,i+"_field",DB_FieldObject(self.__class__,self.instance_dict[i]))
+                setattr(
+                    self,
+                    f"{i}_field",
+                    DB_FieldObject(self.__class__, self.instance_dict[i]),
+                )
+
                 if len(self.kwargs) > 0:
                     if i in self.kwargs:
                         setattr(self,i,self.kwargs[i])
@@ -31,14 +35,13 @@ class DB_Model():
                         setattr(self,i,self.instance_dict[i].db_value())
 
                 inst_dict[i] = self.instance_dict[i]
-        
+
         self.instance_dict = inst_dict
 
     
     def objects(self):
         self.__init__()
-        sub_obj = self.DB_Objects(self)
-        return sub_obj
+        return self.DB_Objects(self)
        
 
     def create_table(self):

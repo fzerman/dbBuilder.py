@@ -1,6 +1,5 @@
 def get_classes(module):
-    clsmembers = inspect.getmembers(sys.modules[module], inspect.isclass)
-    return clsmembers
+    return inspect.getmembers(sys.modules[module], inspect.isclass)
 
 class StringStructureParser():
     def __init__(self,s,form):
@@ -16,9 +15,9 @@ class StringStructureParser():
 
         for i in self.format.split("<"):
             for x in i.split(">"):
-                if not x == "":
+                if x != "":
                     if x == i.split(">")[0]:  
-                        format_ins_list.append("<"+x+">")
+                        format_ins_list.append(f"<{x}>")
                     else:
                         format_ins_list.append(x)
 
@@ -34,7 +33,7 @@ class StringStructureParser():
                 label = l[ l.index(i)-1 ].replace("<","").replace(">","") 
                 self.format_dict[ label ] = self.string_copy.partition(i)[0]
                 self.string_copy = self.string_copy.partition(i)[2]
-            
+
             #if last index
             if l.index(i) == len(l)-1 and ( i.startswith("<") and i.endswith(">") ):
                 label = l[ l.index(i) ].replace("<","").replace(">","") 
