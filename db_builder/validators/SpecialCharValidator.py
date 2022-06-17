@@ -9,13 +9,13 @@ class SpecialCharValidator(DB_Validator):
             if "spec" in kwargs:
                 if kwargs["spec"] in kwargs["value"]:
                     return True
-                return False
             else:
                 spec_list = '<!>£#^+-*/$%&}{[()]=?_-|.,;:@'
                 for i in spec_list:
                     if i in kwargs["value"]:
                         return True
-                return False
+
+            return False
 
             
         return self._check(wrapper)

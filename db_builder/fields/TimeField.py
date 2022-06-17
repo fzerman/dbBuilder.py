@@ -17,12 +17,11 @@ class TimeField(DB_Field):
 
     def db_value(self):
         if self.is_valid():
-            if self.get_kwarg("auto_now") == True:     
-                now = time.localtime()
-                return f"{now.tm_hour}:{now.tm_min}:{now.tm_sec}" 
-            else:
+            if self.get_kwarg("auto_now") != True:
                 return self.get_kwarg("value")
 
+            now = time.localtime()
+            return f"{now.tm_hour}:{now.tm_min}:{now.tm_sec}"
         return False
 
     def get_value(self,value):

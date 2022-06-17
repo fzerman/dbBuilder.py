@@ -16,16 +16,14 @@ class DB_Field():
         self.field_type = ""
 
     def get_kwarg(self,kw):
-        if kw in self.kwargs:
-            return self.kwargs[kw]
-        return False
+        return self.kwargs[kw] if kw in self.kwargs else False
 
     def set_query(self):
         return " ".join([self.field_name,self.set_q()])
      
     def set_q(self):
         q = [self.field_type]
-        
+
         if(self.is_primary()):
             q.append("PRIMARY KEY")
 
@@ -35,15 +33,14 @@ class DB_Field():
         if(self.is_auto_inc()):
             q.append("AUTOINCREMENT")
 
-        if(self.get_foreign()):
-            q.append("FOREIGN KEY REFERENCES "+ self.get_foreign() +"(id)")
+        if (self.get_foreign()):
+            q.append(f"FOREIGN KEY REFERENCES {self.get_foreign()}(id)")
 
         if(not self.is_nullable()):
             q.append("NOT NULL")
 
-        default = self.get_default()
-        if(default):
-            q.append("DEFAULT " + default)
+        if default := self.get_default():
+            q.append(f"DEFAULT {default}")
 
         return " ".join(q)
         

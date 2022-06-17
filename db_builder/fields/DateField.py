@@ -17,12 +17,11 @@ class DateField(DB_Field):
 
     def db_value(self):
         if self.is_valid():
-            if self.get_kwarg("auto_now") == True:     
-                now = datetime.now()
-                return date(now.year,now.month,now.day).isoformat()
-            else:
+            if self.get_kwarg("auto_now") != True:
                 return self.get_kwarg("value")
 
+            now = datetime.now()
+            return date(now.year,now.month,now.day).isoformat()
         return False
 
     def get_value(self,value):

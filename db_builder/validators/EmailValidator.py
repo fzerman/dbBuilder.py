@@ -13,7 +13,7 @@ class EmailValidator(DB_Validator):
 
             if spev_at and spev_dot:
                 dot_after_at = kwargs["value"].split("@")[1]
-                if not dot_after_at.find(".") == -1:
+                if dot_after_at.find(".") != -1:
                     return True
                 raise ValidatorError("Email","EmailValidator","This email is not valid!")
             raise ValidatorError("Email","EmailValidator","This email is not valid!")

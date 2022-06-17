@@ -8,10 +8,7 @@ class SmallLetterValidator(DB_Validator):
         def wrapper(**kwargs):
             if "value" in kwargs:
                 smallletters = "abcdefghıjklmnopQrstuvwxyz"
-                for i in smallletters:
-                    if i in kwargs["value"]:
-                        return True
-                return False
+                return any(i in kwargs["value"] for i in smallletters)
             return False
             
         return self._check(wrapper)

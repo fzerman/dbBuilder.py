@@ -8,18 +8,14 @@ class BoolField(DB_Field):
 
     def db_value(self):
         if self.is_valid():
-            if(self.get_kwarg("value") == True):
-                return 1
-            else:
-                return 0
+            return 1 if (self.get_kwarg("value") == True) else 0
         return False
         
     def is_valid(self):
-        if self.get_kwarg("value") in [True,False] and self.get_validators_result():
-            return True
-        return False
+        return bool(
+            self.get_kwarg("value") in [True, False]
+            and self.get_validators_result()
+        )
     
     def get_value(self,value):
-        if(value == 1):
-            return True
-        return False
+        return value == 1
