@@ -29,6 +29,4 @@ class ImageField(DB_Field):
 
     
     def get_value(self,value):
-        if os.path.isfile(value):
-            return value
-        return False
+        return value if os.path.isfile(value) else False

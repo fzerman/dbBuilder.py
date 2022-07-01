@@ -14,10 +14,9 @@ class FileField(DB_Field):
             file_name = ''.join(random.choices(string.ascii_lowercase + string.digits, k = 20)) + '.'+self.file.split(".")[-1]
             if os.path.isdir(UPLOAD_FOLDER):
                 file_path = os.path.join(UPLOAD_FOLDER,file_name)
-                nf = open(self.file)
-                f = open(file_path,"w")
-                f.write(nf.read())
-                nf.close()
+                with open(self.file) as nf:
+                    f = open(file_path,"w")
+                    f.write(nf.read())
                 f.close()
                 return file_path
             raise FileNotFoundError("Upload Directory Is Not Found!")
@@ -33,6 +32,4 @@ class FileField(DB_Field):
 
     
     def get_value(self,value):
-        if os.path.isfile(value):
-            return value
-        return False
+        return value if os.path.isfile(value) else False

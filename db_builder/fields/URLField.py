@@ -24,9 +24,7 @@ class URLField(DB_Field):
         return is_valid_url(self.get_kwarg("value")) and LengthValidator(value=self.get_kwarg("value"),length=self.max_length).check() and self.get_validators_result()
 
     def db_value(self):
-        if self.is_valid():
-            return slugify( self.get_kwarg("value") )
-        return False
+        return slugify( self.get_kwarg("value") ) if self.is_valid() else False
 
     def get_value(self,value):
         pass

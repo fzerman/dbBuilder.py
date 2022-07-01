@@ -13,10 +13,7 @@ class DB_Query():
         self.cursor = self.connection.cursor()
 
     def dict_factory(self,cursor, row):
-        d = {}
-        for idx, col in enumerate(cursor.description):
-            d[col[0]] = row[idx]
-        return d
+        return {col[0]: row[idx] for idx, col in enumerate(cursor.description)}
 
     def run(self,query,callback):
         callback(query,self)

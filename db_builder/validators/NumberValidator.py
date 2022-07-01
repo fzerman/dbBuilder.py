@@ -8,10 +8,7 @@ class NumberValidator(DB_Validator):
         def wrapper(**kwargs):
             if "value" in kwargs:
                 numbers = "1234567890"
-                for i in numbers:
-                    if i in kwargs["value"]:
-                        return True
-                return False
+                return any(i in kwargs["value"] for i in numbers)
             return False
             
         return self._check(wrapper)
